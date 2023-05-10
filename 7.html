@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Academic Records</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            border: 1px solid black;
+            padding: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <form id="academicForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name"><br><br>
+
+        <label for="subject">Subject:</label>
+        <input type="text" id="subject" name="subject"><br><br>
+
+        <label for="grade">Grade:</label>
+        <input type="text" id="grade" name="grade"><br><br>
+
+        <button type="button" onclick="addRecord()">Add Record</button>
+    </form>
+
+    <table id="academicTable">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Subject</th>
+                <th>Grade</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <script>
+        function addRecord() {
+            // Get form values
+            var name = document.getElementById('name').value;
+            var subject = document.getElementById('subject').value;
+            var grade = document.getElementById('grade').value;
+
+            // Create a new table row
+            var table = document.getElementById('academicTable').getElementsByTagName('tbody')[0];
+            var newRow = table.insertRow(table.rows.length);
+
+            // Insert cells into the row
+            var nameCell = newRow.insertCell(0);
+            var subjectCell = newRow.insertCell(1);
+            var gradeCell = newRow.insertCell(2);
+
+            // Set the cell values
+            nameCell.innerHTML = name;
+            subjectCell.innerHTML = subject;
+            gradeCell.innerHTML = grade;
+
+            // Reset form inputs
+            document.getElementById('name').value = '';
+            document.getElementById('subject').value = '';
+            document.getElementById('grade').value = '';
+        }
+    </script>
+</body>
+
+</html>
